@@ -59,7 +59,7 @@ function activate(context) {
         text
             ? vscode.commands.executeCommand('editor.action.insertLineAfter')
                 .then(() => {
-                    const logToInsert = `console.log('${text}: ', ${text});`;
+                    const logToInsert = `console.log("===========LOGSSTART===========")\nconsole.log('${text}: ', ${text})\nconsole.log("============LOGSEND============")`
                     insertText(logToInsert);
                 })
             : insertText('console.log();');

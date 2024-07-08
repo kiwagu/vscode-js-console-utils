@@ -68,11 +68,7 @@ function activate(context) {
         ? vscode.commands
             .executeCommand("editor.action.insertLineAfter")
             .then(() => {
-              const logToInsert = `console.debug(\n    \"===LOGSSTART===\\n\",\n    \">${Date.now()
-                .toString()
-                .substring(
-                  7,
-                )}<\\n\",\n    \"${text}: ↴\\n",\n    ${text},\n    \"\\n====LOGSEND====\\n",\n  )`
+              const logToInsert = `/* prettier-ignore */ /* CONSOLE DEBUG TOREMOVE */ console.dir(\"==LOG==\\n\", \"${text}:", typeof ${text}, "↴\\n", ${text}, \"\\n==END==\\n")`
               insertText(logToInsert)
             })
         : insertText("console.debug()")
